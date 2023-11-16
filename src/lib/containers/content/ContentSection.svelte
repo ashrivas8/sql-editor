@@ -1,0 +1,57 @@
+<script>
+  import Editor from "../../components/Editor.svelte";
+  import playIcon from "../../../assets/play.svg";
+
+  import { queryText, queryResults } from "./store";
+  import { getQueryResults } from "./helpers";
+  import ResultsTable from "./ResultsTable.svelte";
+
+  function handleExecute() {
+    if (!$queryText) {
+      window.alert('Please enter a query');
+      return;
+    }
+
+    $queryResults = getQueryResults();
+  }
+</script>
+
+<div class="query-text-actions">
+  <h1>Run SQL Query</h1>
+  <button type="button" id="execute-btn" on:click={handleExecute}>
+    <img src={playIcon} alt="execute-query" />
+  </button>
+</div>
+<Editor on:execute={handleExecute} />
+<ResultsTable />
+
+
+<style>
+  .query-text-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: center;
+    height: auto;
+  }
+
+  #execute-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0341d8de;
+    padding: 6px 28px;
+  }
+
+  #execute-btn:hover {
+    background-color: #042c8dde;
+  }
+
+  #execute-btn img {
+    height: 28px;
+  }
+
+  h1 {
+    margin: 0;
+  }
+</style>
