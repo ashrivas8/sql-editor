@@ -4,9 +4,9 @@
 
 {#if componentFunc}
   <!-- svelte-ignore empty-block -->
-  {#await componentFunc()}
+  <!-- {#await componentFunc()} -->
     <!-- todo: loader? -->
-  {:then component}
-    <svelte:component this={component.default} />
-  {/await}
+  <!-- {:then component} -->
+    <svelte:component this={componentFunc} />
+  <!-- {/await} -->
 {/if}
