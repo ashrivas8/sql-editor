@@ -3,23 +3,23 @@
   import editIcon from '../../../assets/edit.svg';
   import NavCell from '../../components/NavCell.svelte';
   import NavContent from '../../components/NavContent.svelte';
-  import QueriesNav from './nav-content/QueriesNav.svelte';
-  import TablesNav from './nav-content/TablesNav.svelte';
+  // import QueriesNav from './nav-content/QueriesNav.svelte';
+  // import TablesNav from './nav-content/TablesNav.svelte';
 
   const navTabs = [
     {
       name: 'home',
       label: '',
       icon: editIcon,
-      component: QueriesNav,
-      // component: () => import('./nav-content/QueriesNav.svelte'),
+      // component: QueriesNav,
+      component: () => import('./nav-content/QueriesNav.svelte'),
     },
     {
       name: 'tables',
       label: 'Tables',
       icon: tableIcon,
-      component: TablesNav,
-      // component: () => import('./nav-content/TablesNav.svelte'),
+      // component: TablesNav,
+      component: () => import('./nav-content/TablesNav.svelte'),
     }
   ];
 
