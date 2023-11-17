@@ -42,9 +42,9 @@
   .nav-column {
     height: 100%;
     background-color: #9dacc39c;
-    width: 18%;
+    min-width: 18%;
     border-top-right-radius: 4px;
-    padding: 8px 0;
+    padding: 24px 0;
   }
 
   img[slot="icon"] {
@@ -58,5 +58,6 @@
 
   .sidebar-content {
     display: flex;
+    flex-grow: 1;
   }
 </style>

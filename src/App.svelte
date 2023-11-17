@@ -20,6 +20,7 @@
   }
 
   #sidebar {
+    display: flex;
     flex: 0 0 25%;
     background-color: #f5f5f5;
   }

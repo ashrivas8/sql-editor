@@ -19,8 +19,9 @@
   })
 </script>
 
+<!-- on:change={(e) => $queryText = e.detail} -->
 <CodeMirror
-  on:change={(e) => $queryText = e.detail}
+  bind:value={$queryText}
   lang={sql({
     upperCaseKeywords: true,
     schema: {

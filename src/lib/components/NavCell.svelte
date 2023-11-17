@@ -3,7 +3,7 @@
   export let selected = false;
 </script>
 
-<div class="side-nav__cell" class:selected on:click={handleClick} role="button">
+<div class="side-nav__cell" class:selected on:click={handleClick} on:keyup={handleClick} role="button">
   <slot name="icon" />
   <slot name="name" />
 </div>

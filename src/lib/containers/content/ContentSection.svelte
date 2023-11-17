@@ -4,14 +4,15 @@
 
   import { queryText, queryResults } from "./store";
   import { getQueryResults } from "./helpers";
-  import ResultsTable from "./ResultsTable.svelte";
+  import ResultsView from "./ResultsView.svelte";
+  import { updateRecentQueries } from "../sidebar/store";
 
   function handleExecute() {
     if (!$queryText) {
       window.alert('Please enter a query');
       return;
     }
-
+    updateRecentQueries($queryText);
     $queryResults = getQueryResults();
   }
 </script>
@@ -23,7 +24,7 @@
   </button>
 </div>
 <Editor on:execute={handleExecute} />
-<ResultsTable />
+<ResultsView />
 
 
 <style>
@@ -41,6 +42,7 @@
     justify-content: center;
     background-color: #0341d8de;
     padding: 6px 28px;
+    border-color: #646cff;
   }
 
   #execute-btn:hover {
