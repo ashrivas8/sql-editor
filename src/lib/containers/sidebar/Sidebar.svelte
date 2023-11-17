@@ -30,7 +30,7 @@
   <div class="nav-column">
     {#each navTabs as tab, idx}
       <NavCell handleClick={() => activeTabIdx = idx} selected={idx === activeTabIdx}>
-        <img slot="icon" src={tab.icon} alt={tab.name} />
+        <img slot="icon" src={tab.icon} alt={tab.name} width="28" height="28" />
         <span slot="name">{tab.label}</span>
       </NavCell>
     {/each}
@@ -45,10 +45,6 @@
     min-width: 18%;
     border-top-right-radius: 4px;
     padding: 24px 0;
-  }
-
-  img[slot="icon"] {
-    height: 28px;
   }
 
   span[slot="name"] {

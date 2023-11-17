@@ -19,9 +19,12 @@
 
 <div class="query-text-actions">
   <h1>Run SQL Query</h1>
-  <button type="button" id="execute-btn" on:click={handleExecute}>
-    <img src={playIcon} alt="execute-query" />
-  </button>
+  <div class="exe-continer">
+    <button type="button" id="execute-btn" on:click={handleExecute}>
+      <img src={playIcon} width="28" height="28" alt="execute-query" />
+    </button>
+    <span>(Cmd + Enter to execute)</span>
+  </div>
 </div>
 <Editor on:execute={handleExecute} />
 <ResultsView />
@@ -49,8 +52,15 @@
     background-color: #042c8dde;
   }
 
-  #execute-btn img {
-    height: 28px;
+  .exe-continer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .exe-continer span {
+    font-size: 10px;
+    color: #0000006e;
   }
 
   h1 {
