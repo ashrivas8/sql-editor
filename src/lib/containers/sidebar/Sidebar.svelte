@@ -35,7 +35,7 @@
       </NavCell>
     {/each}
   </div>
-  <NavContent componentFunc={navTabs[activeTabIdx]?.component} />
+  <NavContent component={navTabs[activeTabIdx]?.component} />
 </div>
 
 <style>

@@ -75,3 +75,9 @@ table td {
   padding: .5em;
   border: 1px solid lightgrey;
 }
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

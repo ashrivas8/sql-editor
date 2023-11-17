@@ -1,12 +1,7 @@
 <script>
-  export let componentFunc;
+  export let component;
 </script>
 
-{#if componentFunc}
-  <!-- svelte-ignore empty-block -->
-  <!-- {#await componentFunc()} -->
-    <!-- todo: loader? -->
-  <!-- {:then component} -->
-    <svelte:component this={componentFunc} />
-  <!-- {/await} -->
+{#if component}
+  <svelte:component this={component} />
 {/if}

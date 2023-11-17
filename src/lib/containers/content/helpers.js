@@ -6,19 +6,18 @@ export function getQueryResults() {
     data: [], // array of arrays
   };
 
-  // const customerData = customerData.slice(1, 25);
+  const rowData = customerData.slice(1);
   
   for (let item in customerData[0]) {
     results.columns.push(customerData[0][item]);
   }
-
-  for (let i in customerData) {
+  for (let i in rowData) {
     let temp = [];
-
-    for (let j in customerData[i]) {
-      temp.push(customerData[i][j]);
+    
+    for (let j in rowData[i]) {
+      temp.push(rowData[i][j]);
     }
-
+    
     results.data.push(temp);
   }
 
