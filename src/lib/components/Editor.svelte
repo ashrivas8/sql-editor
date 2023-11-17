@@ -31,7 +31,7 @@
   })}
   styles={{
     "&": {
-      "height": "380px",
+      "height": "320px",
       "font-size": "16px",
     },
   }}
@@ -41,6 +41,6 @@
   :global(.codemirror-wrapper) {
     border-radius: 4px;
     border: 1px solid #d7bebe;
-    height: 380px;
+    height: 320px;
   }
 </style>

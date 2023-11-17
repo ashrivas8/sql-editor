@@ -21,12 +21,15 @@
 
   #sidebar {
     display: flex;
-    flex: 0 0 25%;
+    flex: 0 0 23%;
     background-color: #f5f5f5;
   }
 
   #editor {
     flex: 1;
     padding: 10px 16px 10px 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 </style>
