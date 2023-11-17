@@ -1,6 +1,30 @@
 <script>
   export let columns = [];
   export let rows = [];
+  export let rowsInPage = 20;
+
+  let numPages = Math.ceil(rows.length / rowsInPage);
+  let activePage = 1;
+  let pagesArray = Array.from({ length: numPages }, (_, idx) => idx + 1);
+  
+  $: rowsToShow = rows.slice(rowsInPage * (activePage - 1), activePage * rowsInPage);
+
+  function handlePageNext() {
+    if (activePage === numPages) return;
+
+    activePage++;
+  }
+
+  function handlePagePrev() {
+    if (activePage === 1) return;
+
+    activePage--;
+  }
+
+  $: rows, rowsInPage, numPages = Math.ceil(rows.length / rowsInPage);
+
+  $: numPages, pagesArray = Array.from({ length: numPages }, (_, idx) => idx + 1);
+    
 </script>
 
 {#if columns.length}
@@ -13,7 +37,7 @@
       </tr>
     </thead>
     <tbody>
-      {#each rows as row, idx (idx)}
+      {#each rowsToShow as row, idx (idx)}
         <tr>
           {#each row as cell}
             <td>
@@ -25,22 +49,31 @@
     </tbody>
   </table>
 
-  <!-- <nav aria-label="pagination">
+  <nav aria-label="pagination">
     <ul class="pagination">
-      <li><a href=""><span aria-hidden="true">«</span></a></li>
-      <li><a href=""><span class="visuallyhidden">page </span>1</a></li>
-      <li><a href="" aria-current="page"><span class="visuallyhidden">page </span>2</a></li>
-      <li><a href=""><span class="visuallyhidden">page </span>3</a></li>
-      <li><a href=""><span class="visuallyhidden">page </span>4</a></li>
-      <li><a href=""><span aria-hidden="true">»</span></a></li>
+      <li class:disabled={activePage===numPages}>
+        <button on:click={handlePagePrev}>«</button></li>
+      {#each pagesArray as pageNum}
+        <li>
+          <button class:active={activePage === pageNum} on:click={() => activePage = +pageNum}>{pageNum}</button>
+        </li>
+      {/each}
+      <li class:disabled={activePage===1}>
+        <button on:click={handlePageNext}>»</button></li>
     </ul>
-  </nav> -->
+  </nav>
 {/if}
 
 <style>
   nav {
   display: flex;
   justify-content: center;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .pagination {
@@ -52,5 +85,14 @@
 
   .pagination li {
     margin: 0 1px;
+  }
+
+  button {
+    background: transparent;
+    outline: none;
+  }
+
+  button.active {
+    font-weight: 600;
   }
 </style>
