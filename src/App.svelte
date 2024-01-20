@@ -1,14 +1,24 @@
 <script>
-  import ContentSection from "./lib/containers/content/ContentSection.svelte";
-  import Sidebar from "./lib/containers/sidebar/Sidebar.svelte";
+  // import ContentSection from "./lib/containers/content/ContentSection.svelte";
+  // import Sidebar from "./lib/containers/sidebar/Sidebar.svelte";
 </script>
 
 <main>
   <section id="sidebar">
-    <Sidebar />
+    <!-- <Sidebar /> -->
+    {#await import('./lib/containers/sidebar/Sidebar.svelte')}
+      Loading...
+    {:then component} 
+      <svelte:component this={component.default} />
+    {/await}
   </section>
   <section id="editor">
-    <ContentSection />
+    {#await import('./lib/containers/content/ContentSection.svelte')}
+      Loading...
+    {:then component} 
+      <svelte:component this={component.default} />
+    {/await}
+    <!-- <ContentSection /> -->
   </section>
 </main>
 
